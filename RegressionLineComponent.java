@@ -1,5 +1,6 @@
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.geom.Point2D;
 
 import javax.swing.JComponent;
@@ -33,12 +34,36 @@ public class RegressionLineComponent extends JComponent
 					p5 = null;
 				}
 				
+				if(track == 1)
+				{
+					p2 = new Point2D.Double(event.getX(), event.getY());
+				}
+				
+				if(track == 2)
+				{
+					p3 = new Point2D.Double(event.getX(), event.getY());
+				}
+				if(track == 3)
+				{
+					p4 = new Point2D.Double(event.getX(), event.getY());
+				}
+				if(track == 4)
+				{
+					p5 = new Point2D.Double(event.getX(), event.getY());
+				}
+
+
+				
+				
 				track++;
 				repaint();
 				
 			}
 			
 		}
+		
+		MouseListener listener = new MousePressListener();
+		addMouseListener(listener);
 		
 	}
 	
