@@ -3,12 +3,14 @@ import java.awt.Graphics2D;
 public class RegressionLine 
 {
 	
-	public RegressionLine(double x,double y)
+	public RegressionLine(double x,double y, int clicks)
 	{
 		
 		x = sum_x;
 		
 		y = sum_y;
+		
+		n = clicks;
 		
 		sum_x2 = Math.pow(x, 2);
 		
@@ -21,7 +23,9 @@ public class RegressionLine
 		
 		//compute slope
 		//numerator
-		//(sum_xy) - (n * )
+		double top = (sum_xy) - (n * (sum_x/5) * (sum_y/5));
+		//denominator
+		double bot = sum_x2
 		
 	}
 	
