@@ -1,4 +1,5 @@
 import java.awt.Graphics2D;
+import java.awt.geom.Line2D;
 
 public class RegressionLine 
 {
@@ -23,9 +24,21 @@ public class RegressionLine
 		
 		//compute slope
 		//numerator
-		double top = (sum_xy) - (n * (sum_x/5) * (sum_y/5));
+		double top = (sum_xy) - (n * (sum_x/n) * (sum_y/n));
 		//denominator
-		double bot = sum_x2
+		double bot = sum_x2 - (n*Math.pow(sum_x/n, 2));
+		//slope
+		double slope = top/bot;
+		
+		Line2D.Double line = new Line2D.Double(0, sum_y/n + slope*(0-sum_x/n), x2-1, sum_y/n + slope*(x2-sum_x/n));
+		g2.draw(line);
+		
+	}
+	
+	public void addPoint(double x, double y)
+	{
+		
+		
 		
 	}
 	
