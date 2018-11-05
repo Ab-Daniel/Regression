@@ -73,33 +73,42 @@ public class RegressionLineComponent extends JComponent
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D)g; //recovers Graphics2D
 		
+		line = new RegressionLine();
 		
 		//plot points
 		if(p1 != null)
 		{
 			plotPoint(g2, p1);
+			line.addPoint(p1.getX(), p1.getY());
+			line.draw(g2, Math.pow(x, 2));
 		}
 		
 		if(p2 != null)
 		{
 			plotPoint(g2, p2);
+			line.addPoint(p2.getX(), p2.getY());
+			line.draw(g2, Math.pow(x, 2));
 		}
 		
 		if(p3 != null)
 		{
 			plotPoint(g2, p3);
+			line.addPoint(p3.getX(), p3.getY());
+			line.draw(g2, Math.pow(x, 2));
 		}
 		
 		if(p4 != null)
 		{
 			plotPoint(g2, p4);
+			line.addPoint(p4.getX(), p4.getY());
+			line.draw(g2, Math.pow(x, 2));
 		}
 		
 		if(p5 != null)
 		{
 			plotPoint(g2, p5);
-			x = p1.getX()+p2.getX()+p3.getX()+p4.getX()+p5.getX();
-			y = p1.getY()+p2.getY()+p3.getY()+p4.getY()+p5.getY();
+			line.addPoint(p5.getX(), p5.getY());
+			line.draw(g2, Math.pow(x, 2));
 			track = 0;
 		}
 		
@@ -125,6 +134,9 @@ public class RegressionLineComponent extends JComponent
 	private Point2D p4;
 	private Point2D p5;
 	
+	private RegressionLine line;
+	
 	private double x;
 	private double y;
+	
 }
