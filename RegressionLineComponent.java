@@ -54,9 +54,6 @@ public class RegressionLineComponent extends JComponent
 				{
 					p5 = new Point2D.Double(event.getX(), event.getY());
 				}
-
-
-				
 				
 				track++;
 				repaint();
@@ -101,6 +98,8 @@ public class RegressionLineComponent extends JComponent
 		if(p5 != null)
 		{
 			plotPoint(g2, p5);
+			x = p1.getX()+p2.getX()+p3.getX()+p4.getX()+p5.getX();
+			y = p1.getY()+p2.getY()+p3.getY()+p4.getY()+p5.getY();
 			track = 0;
 		}
 		
@@ -112,7 +111,7 @@ public class RegressionLineComponent extends JComponent
 		double x = p.getX();
 		double y = p.getY();
 		
-		Ellipse2D.Double dot = new Ellipse2D.Double(x, y, 5, 5);
+		Ellipse2D.Double dot = new Ellipse2D.Double(x-2.5, y-2.5, 5, 5);
 		g2.fill(dot);
 		
 		
@@ -121,12 +120,11 @@ public class RegressionLineComponent extends JComponent
 	private int track;
 	
 	private Point2D p1;
-	
 	private Point2D p2;
-	
 	private Point2D p3;
-	
 	private Point2D p4;
-	
 	private Point2D p5;
+	
+	private double x;
+	private double y;
 }
