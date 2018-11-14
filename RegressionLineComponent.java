@@ -37,20 +37,20 @@ public class RegressionLineComponent extends JComponent
 					p5 = null;
 				}
 				
-				if(track == 1)
+				else if(track == 1)
 				{
 					p2 = new Point2D.Double(event.getX(), event.getY());
 				}
 				
-				if(track == 2)
+				else if(track == 2)
 				{
 					p3 = new Point2D.Double(event.getX(), event.getY());
 				}
-				if(track == 3)
+				else if(track == 3)
 				{
 					p4 = new Point2D.Double(event.getX(), event.getY());
 				}
-				if(track == 4)
+				else if(track == 4)
 				{
 					p5 = new Point2D.Double(event.getX(), event.getY());
 				}
@@ -73,14 +73,15 @@ public class RegressionLineComponent extends JComponent
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D)g; //recovers Graphics2D
 		
-		line = new RegressionLine();
 		
 		//plot points
 		if(p1 != null)
-		{
+		{			line = new RegressionLine();
+
 			plotPoint(g2, p1);
 			line.addPoint(p1.getX(), p1.getY());
 			line.draw(g2, Math.pow(x, 2));
+
 		}
 		
 		if(p2 != null)
@@ -117,13 +118,13 @@ public class RegressionLineComponent extends JComponent
 	public void plotPoint(Graphics2D g2, Point2D p)
 	{
 		
-		double x = p.getX();
-		double y = p.getY();
+		double px = p.getX();
+		double py = p.getY();
 		
-		Ellipse2D.Double dot = new Ellipse2D.Double(x-2.5, y-2.5, 5, 5);
+		Ellipse2D.Double dot = new Ellipse2D.Double(px-2.5, py-2.5, 5, 5);
 		g2.fill(dot);
 		
-		
+		x = x + px;
 	}
 	
 	private int track;
@@ -137,6 +138,5 @@ public class RegressionLineComponent extends JComponent
 	private RegressionLine line;
 	
 	private double x;
-	private double y;
 	
 }
