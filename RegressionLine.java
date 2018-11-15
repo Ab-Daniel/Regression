@@ -12,19 +12,16 @@ public class RegressionLine
 		double slope;
 		
 		if(n==1)
-		{
-			slope = 0;
-			line = new Line2D.Double(0, sum_y, 499, sum_y);
-			g2.draw(line);
-		}
 		
-		if(n!=1)
-		{
-			slope = (sum_xy) - (n * (sum_x/n) * (sum_y/n))/
-					sum_x2 - ((sum_x2) - n *(sum_x/n) * (sum_y/n));
+			slope = 0;
+		
+		else
+		
+			slope = (sum_xy) - n * (sum_x/n) * (sum_y/n)/
+					(sum_x2 - n *(sum_x/n) * (sum_y/n));
 			line = new Line2D.Double(0, sum_y/n + slope*(0-sum_x/n), x2-1, sum_y/n + slope*(x2-sum_x/n));
 			g2.draw(line);
-		}
+		
 		
 	}
 	
@@ -32,10 +29,10 @@ public class RegressionLine
 	{
 		
 		n++;
-		sum_x=(sum_x+x)/5;
-		sum_y=(sum_y+y)/5;
-		sum_x2=sum_x*sum_x;
-		sum_xy=sum_x*sum_y;
+		sum_x =+ x;
+		sum_y =+ y;
+		sum_x2 =+ x * x;
+		sum_xy =+ x* y;
 		
 	}
 	
