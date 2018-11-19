@@ -27,10 +27,13 @@ public class RegressionLineComponent extends JComponent
 			
 			public void mouseClicked(MouseEvent event)
 			{
-				
+				int x = event.getX();
+				int y = event.getY();
+				p = new Point2D.Double(event.getX(), event.getY());
 				if(track == 0)
 				{
 					p1 = new Point2D.Double(event.getX(), event.getY());
+					line = new RegressionLine();
 					p2 = null;
 					p3 = null;
 					p4 = null;
@@ -56,12 +59,14 @@ public class RegressionLineComponent extends JComponent
 				}
 				
 				track++;
+				line.addPoint(x, y);
+				//line.draw(g2, Math.pow(x, 2));
 				repaint();
 				
 			}
 			
 		}
-		
+	
 		MouseListener listener = new MousePressListener();
 		addMouseListener(listener);
 		
@@ -75,41 +80,47 @@ public class RegressionLineComponent extends JComponent
 		
 		
 		//plot points
+		
 		if(p1 != null)
-		{			line = new RegressionLine();
+		{		//	line = new RegressionLine();
 
 			plotPoint(g2, p1);
-			line.addPoint(p1.getX(), p1.getY());
-			line.draw(g2, Math.pow(x, 2));
+		//	line.addPoint(p1.getX(), p1.getY());
+			line.draw(g2, getWidth());
 
 		}
 		
 		if(p2 != null)
 		{
 			plotPoint(g2, p2);
-			line.addPoint(p2.getX(), p2.getY());
-			line.draw(g2, Math.pow(x, 2));
+		//	line.addPoint(p2.getX(), p2.getY());
+		//	line.draw(g2, Math.pow(x, 2));
 		}
 		
 		if(p3 != null)
 		{
 			plotPoint(g2, p3);
-			line.addPoint(p3.getX(), p3.getY());
-			line.draw(g2, Math.pow(x, 2));
+		//	line.addPoint(p3.getX(), p3.getY());
+		//	line.draw(g2, Math.pow(x, 2));
 		}
 		
 		if(p4 != null)
 		{
 			plotPoint(g2, p4);
-			line.addPoint(p4.getX(), p4.getY());
-			line.draw(g2, Math.pow(x, 2));
+		//	line.addPoint(p4.getX(), p4.getY());
+		//	line.draw(g2, Math.pow(x, 2));
 		}
 		
 		if(p5 != null)
 		{
 			plotPoint(g2, p5);
-			line.addPoint(p5.getX(), p5.getY());
-			line.draw(g2, Math.pow(x, 2));
+		//	line.addPoint(p5.getX(), p5.getY());
+		//	line.draw(g2, Math.pow(x, 2));
+			p1 = null;
+			p2 = null;
+			p3 = null;
+			p4 = null;
+			p5 = null;
 			track = 0;
 		}
 		
@@ -134,6 +145,8 @@ public class RegressionLineComponent extends JComponent
 	private Point2D p3;
 	private Point2D p4;
 	private Point2D p5;
+	
+	private Point2D p;
 	
 	private RegressionLine line;
 	
